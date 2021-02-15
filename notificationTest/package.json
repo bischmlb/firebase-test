@@ -7,12 +7,17 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "configure": "copy .app.config.tsx src/config/AppConfig.tsx"
   },
   "dependencies": {
+    "@react-native-community/push-notification-ios": "^1.8.0",
+    "@react-native-firebase/app": "^10.8.0",
+    "azure-arm-notificationhubs": "^1.2.0",
     "react": "16.13.1",
-    "react-native": "0.63.4",
+    "react-native": "^0.63.4",
     "react-native-cli": "^2.0.1",
+    "react-native-device-info": "^8.0.1",
     "react-native-push-notification": "^7.2.0"
   },
   "devDependencies": {
@@ -24,6 +29,7 @@
     "@types/react-native-push-notification": "^7.0.1",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.1.0",
+    "config-tsx": "^1.0.4",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",

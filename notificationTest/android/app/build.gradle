@@ -187,7 +187,9 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
     implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-core'
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
 
     implementation project(':react-native-push-notification')
 
@@ -212,6 +214,12 @@ dependencies {
         releaseImplementation files(hermesPath + "hermes-release.aar")
     } else {
         implementation jscFlavor
+    }
+}
+
+repositories {
+    maven {
+        url "https://dl.bintray.com/microsoftazuremobile/SDK"
     }
 }
 
