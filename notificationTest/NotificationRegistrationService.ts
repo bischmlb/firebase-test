@@ -1,36 +1,38 @@
 export default class NotificationRegistrationService {
     constructor(
         readonly apiUrl: string,
-        readonly apiKey: string) {
+        //readonly apiKey: string
+        ) {
     }
 
-async registerAsync(request: any): Promise<Response> {
+async registerAsync(request: any, deviceId: string): Promise<Response> {
         const method = 'PUT';
-        const registerApiUrl = `${this.apiUrl}/notifications/installations`;
-        console.log("here2");
+        const registerApiUrl = `${this.apiUrl}/notifications/installations/${deviceId}.json`;
+        console.log(registerApiUrl);
         const result = await fetch(registerApiUrl, {
             method: method,
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'apiKey': this.apiKey
+                //'apiKey': this.apiKey
             },
             body: JSON.stringify(request)
         });
 
         this.validateResponse(registerApiUrl, method, request, result);
+        console.log(result);
         return result;
     }
 
     async deregisterAsync(deviceId: string): Promise<Response> {
         const method = 'DELETE';
-        const deregisterApiUrl = `${this.apiUrl}/notifications/installations/${deviceId}`;
+        const deregisterApiUrl = `${this.apiUrl}/notifications/installations/${deviceId}.json`;
         const result = await fetch(deregisterApiUrl, {
             method: method,
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                'apiKey': this.apiKey
+                //'apiKey': this.apiKey
             }
         });
 

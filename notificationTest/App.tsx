@@ -23,6 +23,7 @@ import deviceInfoModule from 'react-native-device-info';
 import NotificationRegistrationService from './NotificationRegistrationService';
 import NotificationService from './NotificationService';
 
+
 export const App = () => {
   const [getFcmRegisteredState, setFcmRegisteredState] = useState<boolean>();
   const [getStatus, setStatus] = useState<string>("Push notifications registration status is unknown");
@@ -64,8 +65,7 @@ export const App = () => {
   const deviceId = deviceInfoModule.getUniqueId();
   const notif = new NotificationService(onRegister, onNotif);
   const notifreg = new NotificationRegistrationService(
-    "hnehhadsa",
-    "asjdajdajsd"
+    "https://testd-912f0-default-rtdb.firebaseio.com",
     //Config.apiUrl,
     //Config.apiKey,
   );
@@ -89,7 +89,7 @@ export const App = () => {
         pushChannel: pnToken,
         tags: [],
       };
-      const response = notifreg.registerAsync(request);
+      const response = notifreg.registerAsync(request, deviceId);
       status = `Registered for ${getRegisteredOS} push notifications`;
       isRegistered = true;
     } catch (e) {
@@ -98,7 +98,6 @@ export const App = () => {
       setIsBusy(false);
       setStatus(status);
       setIsRegistered(isRegistered);
-      console.log("here");
     }
   };
 

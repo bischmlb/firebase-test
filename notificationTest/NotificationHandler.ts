@@ -14,6 +14,7 @@ class NotificationHandler {
 
   onRegister(token: any) {
     console.log('NotificationHandler:', token);
+    
 
     if (typeof this._onRegister === 'function') {
       this._onRegister(token);
